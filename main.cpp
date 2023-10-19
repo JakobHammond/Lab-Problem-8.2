@@ -12,7 +12,13 @@ int countWords(string str);
 int countCharacters(string str);
 int main(void){
     
-    
+    while(true){
+        cout << "Enter a string or Q to quit: ";
+        string input;
+        getline(cin, input);
+        if(input == "Q") break;
+        cout << "Word count: " << countWords(input) << endl;
+    }
     
 }
 
@@ -26,7 +32,10 @@ int countWords(string str){
         string first;
         first = str.substr(countCharacter(str) - i);
         if(first.front() == ' '){
-            words++;
+            first = str.substr(countCharacter(str) - (i + 1));
+            if(first.front() != ' '){
+                words++;
+            }
         }
     }
     return words;
